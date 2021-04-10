@@ -53492,6 +53492,31 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/AppEnv.js":
+/*!********************************!*\
+  !*** ./resources/js/AppEnv.js ***!
+  \********************************/
+/*! exports provided: getEnv */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getEnv", function() { return getEnv; });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+
+var env = {
+  'APP_URL': 'https://vpos.test'
+};
+
+function getEnv(prop) {
+  return env[Object(lodash__WEBPACK_IMPORTED_MODULE_0__["upperCase"])(prop)];
+}
+
+
+
+/***/ }),
+
 /***/ "./resources/js/Helpers/AppStorage.js":
 /*!********************************************!*\
   !*** ./resources/js/Helpers/AppStorage.js ***!
@@ -53579,6 +53604,7 @@ var Token = /*#__PURE__*/function () {
   _createClass(Token, [{
     key: "isValid",
     value: function isValid(token) {
+      console.log(ENV('APP_URL'));
       var payload = this.payload(token);
 
       if (payload) {
@@ -53695,17 +53721,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
-/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Helpers/User */ "./resources/js/Helpers/User.js");
+/* harmony import */ var _AppEnv__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AppEnv */ "./resources/js/AppEnv.js");
+/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Helpers/User */ "./resources/js/Helpers/User.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // Routes Imported.
 
- // Import User and make it global.
 
 
-window.User = _Helpers_User__WEBPACK_IMPORTED_MODULE_3__["default"];
+window.ENV = _AppEnv__WEBPACK_IMPORTED_MODULE_3__["getEnv"]; // Import User and make it global.
+
+
+window.User = _Helpers_User__WEBPACK_IMPORTED_MODULE_4__["default"];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: _routes__WEBPACK_IMPORTED_MODULE_2__["routes"],
   mode: 'history'

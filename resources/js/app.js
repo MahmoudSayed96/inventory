@@ -8,6 +8,9 @@ Vue.use(VueRouter);
 // Routes Imported.
 import {routes} from './routes';
 
+import {getEnv} from './AppEnv';
+window.ENV = getEnv;
+
 // Import User and make it global.
 import User from './Helpers/User';
 window.User = User;
