@@ -8,6 +8,10 @@ Vue.use(VueRouter);
 // Routes Imported.
 import {routes} from './routes';
 
+// Import User and make it global.
+import User from './Helpers/User';
+window.User = User;
+
 const router = new VueRouter({
     routes,
     mode: 'history'
@@ -18,6 +22,3 @@ const app = new Vue({
     router,
 });
 
-// const app = new Vue({
-//   router
-// }).$mount('#app');
