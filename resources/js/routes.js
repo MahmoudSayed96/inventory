@@ -1,9 +1,9 @@
-let Login = require('./components/auth/Login.vue').default;
-let Register = require('./components/auth/Register.vue').default;
-let Forgot = require('./components/auth/Forgot.vue').default;
+import Login from './components/auth/Login.vue';
+import Register from './components/auth/Register.vue';
+import Forgot from './components/auth/Forgot.vue';
 
 export const routes = [
-    {path: '/', component:Login, name:'/'},
-    {path: '/register', component:Register, name:'register'},
-    {path: '/forgot', component:Forgot, name:'forgot'},
+    {path: '/', component: Login, name: '/'},
+    {path: '/register', component: Register, name: 'register'},
+    {path: '/forgot', component: Forgot, name: 'forgot'},
 ];

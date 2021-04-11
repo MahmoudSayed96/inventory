@@ -1947,7 +1947,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Forgot',
+  data: function data() {
+    return {};
+  }
+});
 
 /***/ }),
 
@@ -2012,6 +2017,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'login',
   data: function data() {
     return {
       form: {
@@ -2023,7 +2029,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     login: function login() {
       axios.post('/api/auth/login', this.form).then(function (res) {
-        return User.responseAfterLogin(res.data);
+        return User.responseAfterLogin(res);
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -2091,7 +2097,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Register',
+  data: function data() {
+    return {};
+  }
+});
 
 /***/ }),
 
@@ -53604,7 +53615,6 @@ var Token = /*#__PURE__*/function () {
   _createClass(Token, [{
     key: "isValid",
     value: function isValid(token) {
-      console.log(ENV('APP_URL'));
       var payload = this.payload(token);
 
       if (payload) {
@@ -53661,6 +53671,7 @@ var User = /*#__PURE__*/function () {
   _createClass(User, [{
     key: "responseAfterLogin",
     value: function responseAfterLogin(res) {
+      console.log(res);
       var access_token = res.data.access_token;
       var username = res.data.name; // Check token validation.
 
@@ -54008,23 +54019,23 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
-var Login = __webpack_require__(/*! ./components/auth/Login.vue */ "./resources/js/components/auth/Login.vue")["default"];
+/* harmony import */ var _components_auth_Login_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/auth/Login.vue */ "./resources/js/components/auth/Login.vue");
+/* harmony import */ var _components_auth_Register_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/auth/Register.vue */ "./resources/js/components/auth/Register.vue");
+/* harmony import */ var _components_auth_Forgot_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/auth/Forgot.vue */ "./resources/js/components/auth/Forgot.vue");
 
-var Register = __webpack_require__(/*! ./components/auth/Register.vue */ "./resources/js/components/auth/Register.vue")["default"];
 
-var Forgot = __webpack_require__(/*! ./components/auth/Forgot.vue */ "./resources/js/components/auth/Forgot.vue")["default"];
 
 var routes = [{
   path: '/',
-  component: Login,
+  component: _components_auth_Login_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: '/'
 }, {
   path: '/register',
-  component: Register,
+  component: _components_auth_Register_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
   name: 'register'
 }, {
   path: '/forgot',
-  component: Forgot,
+  component: _components_auth_Forgot_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   name: 'forgot'
 }];
 

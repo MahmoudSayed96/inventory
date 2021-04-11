@@ -51,6 +51,7 @@
 </style>
 <script>
 export default {
+    name:'login',
     data() {
         return {
             form:{
@@ -62,7 +63,7 @@ export default {
     methods:{
         login() {
             axios.post('/api/auth/login', this.form)
-                .then(res => User.responseAfterLogin(res.data))
+                .then(res => User.responseAfterLogin(res))
                 .catch(err => console.log(err));
         }
     }

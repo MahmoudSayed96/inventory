@@ -4,6 +4,7 @@ import AppStorage from './AppStorage';
 class User {
 
     responseAfterLogin(res) {
+        console.log(res);
         const access_token = res.data.access_token;
         const username = res.data.name;
         // Check token validation.

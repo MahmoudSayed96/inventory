@@ -39,5 +39,11 @@
 
 <script>
 export default {
+    name: 'Forgot',
+    data() {
+        return {
+            
+        }
+    }
 }
 </script>
