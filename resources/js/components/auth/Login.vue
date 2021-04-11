@@ -12,12 +12,14 @@
                                 </div>
                                 <form class="user" @submit.prevent="login">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                        <input type="email" class="form-control" :class="{'is-invalid': errors.email }" id="email" aria-describedby="emailHelp"
                                             placeholder="Enter Email Address" required v-model="form.email">
+                                        <div class="text-danger" v-if="errors.email">{{ errors.email[0] }}</div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="password" 
+                                        <input type="password" class="form-control" :class="{'is-invalid': errors.password }" id="password" 
                                             placeholder="Password" required v-model="form.password">
+                                        <div class="text-danger" v-if="errors.password">{{ errors.password[0] }}</div>
                                     </div>
                                     <div class="form-group">
                                     <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
@@ -57,14 +59,34 @@ export default {
             form:{
                 email: null,
                 password: null
-            }
+            },
+            errors:{},
+        }
+    },
+    created() {
+        // If user is logged in redirect to '/home'.
+        if (User.isLoggedIn()) {
+            this.$router.push({ name: 'home' });
         }
     },
     methods:{
         login() {
             axios.post('/api/auth/login', this.form)
-                .then(res => User.responseAfterLogin(res))
-                .catch(err => console.log(err));
+                .then(res => {
+                    User.responseAfterLogin(res);
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Signed in successfully'
+                    });
+                    this.$router.push({ name: 'home' });
+                })
+                .catch(err => this.errors = err.response.data.errors)
+                .catch(
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Email or Password Invalid'
+                    })
+                );
         }
     }
 }
