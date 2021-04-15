@@ -1,0 +1,55 @@
+<nav id="sidebar" v-show="$route.path === '/' || $route.path === '/register' || $route.path === '/forgot' ? false : true" 
+style="display: none;">
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon">
+                <img src="{{asset('backend/img/logo/logo2.png')}}">
+            </div>
+            <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+        </a>
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item active">
+            <router-link to="/home" class="nav-link">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </router-link>
+        </li>
+        <hr class="sidebar-divider">
+        {{-- Employees --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#employees"
+                aria-expanded="true" aria-controls="employees">
+                <i class="fas fa-fw fa-user-tie"></i>
+                <span>Employees</span>
+            </a>
+            <div id="employees" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <router-link to="/create-employee" class="collapse-item">Add Employee</router-link>
+                    <router-link to="/employees" class="collapse-item">All Employees</router-link>
+                </div>
+            </div>
+        </li>
+        {{-- Suppliers --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#suppliers"
+                aria-expanded="true" aria-controls="suppliers">
+                <i class="fas fa-fw fa-user-friends"></i>
+                <span>Suppliers</span>
+            </a>
+            <div id="suppliers" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <router-link to="" class="collapse-item">Add Supplier</router-link>
+                    <router-link to="" class="collapse-item">All Suppliers</router-link>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
+@push('scripts')
+<script>
+    var token = localStorage.getItem('token');
+    if (token) {
+      $('#sidebar').css('display', '');
+    }
+  </script>
+@endpush

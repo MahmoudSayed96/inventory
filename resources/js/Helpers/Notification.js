@@ -5,7 +5,7 @@ class Notification {
             type: 'success',
             layout: 'topRight',
             text: 'Successfully Done',
-            timeout: 1000,
+            timeout: 5000,
         }).show();
     }
 
@@ -14,16 +14,16 @@ class Notification {
             type: 'alert',
             layout: 'topRight',
             text: 'Are you sure?',
-            timeout: 1000,
+            timeout: 5000,
         }).show();
     }
 
-    error() {
+    error(msg) {
         new Noty({
             type: 'error',
             layout: 'topRight',
-            text: 'Something went wrong !',
-            timeout: 1000,
+            text: msg != null ? msg : 'Something went wrong !',
+            timeout: 5000,
         }).show();
     }
 
@@ -32,7 +32,7 @@ class Notification {
             type: 'warning',
             layout: 'topRight',
             text: 'Oops, Wrong',
-            timeout: 1000,
+            timeout: 5000,
         }).show();
     }
 }
