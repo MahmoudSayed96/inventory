@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row">
-            <router-link to="/create-employee" class="btn btn-primary">Add Employee</router-link>
+            <router-link to="/create-supplier" class="btn btn-primary">Add Supplier</router-link>
         </div>
         <div class="row mt-5">
             <div class="col-4">
@@ -13,7 +13,7 @@
               <!-- Simple Tables -->
               <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Employees List</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Suppliers List</h6>
                 </div>
                 <div class="table-responsive">
                   <table class="table align-items-center table-flush">
@@ -21,27 +21,27 @@
                       <tr>
                         <th>Name</th>
                         <th>Photo</th>
+                        <th>Email</th>
                         <th>Phone</th>
-                        <th>Salary</th>
-                        <th>Joining Date</th>
+                        <th>Shop Name</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="employee in searchFilter" :key="employee.id">
-                        <td>{{ employee.name }}</td>
-                        <td><img :src="employee.photo" class="rounded-circle" width="50" height="50" :alt="employee.name"></td>
-                        <td>{{ employee.phone }}</td>
-                        <td>{{ employee.salary }}</td>
-                        <td>{{ employee.joining_date }}</td>
+                      <tr v-for="supplier in searchFilter" :key="supplier.id">
+                        <td>{{ supplier.name }}</td>
+                        <td><img :src="supplier.photo" class="rounded-circle" width="50" height="50" :alt="supplier.name"></td>
+                        <td>{{ supplier.email }}</td>
+                        <td>{{ supplier.phone }}</td>
+                        <td>{{ supplier.shop_name }}</td>
                         <td>
                             <a href="#" class="btn btn-info">
                                 <i class="fas fa-eye text-white"></i>
                             </a>
-                            <router-link :to="{name: 'edit-employee', params: {id: employee.id}}"  class="btn btn-primary">
+                            <router-link :to="{name: 'edit-supplier', params: {id: supplier.id}}"  class="btn btn-primary">
                                 <i class="fas fa-pencil-alt text-white"></i>
                             </router-link>
-                            <a @click="deleteEmployee(employee.id)" class="btn btn-danger">
+                            <a @click="deleteSupplier(supplier.id)" class="btn btn-danger">
                                 <i class="fas fa-trash text-white"></i>
                             </a>
                         </td>
@@ -64,46 +64,46 @@
 
 <script>
 export default {
-    name: 'all-emplyees',
+    name: 'all-suppliers',
     created() {
         // If user is not logged in redirect to '/login'.
         if (!User.isLoggedIn()) {
             this.$router.push({ name: '/' });
         }
-        this.getEmployees();
+        this.getSuppliers();
     },
     data() {
         return {
             tabledata: {},
-            employees: [],
+            suppliers: [],
             searchTerm: ''
         }
     },
     computed: {
         searchFilter() {
-            return this.employees.filter(employee => {
-                return employee.name.match(this.searchTerm);
+            return this.suppliers.filter(supplier => {
+                return supplier.name.match(this.searchTerm);
             });
         }
     },
     methods: {
-        getEmployees() {
-            axios.get('/api/employees')
-                .then(({data}) => { 
-                    this.employees = data.data;
+        getSuppliers() {
+            axios.get('/api/suppliers')
+                .then(({ data }) => {
+                    this.suppliers = data.data;
                     this.tabledata = data;
                 })
                 .catch((err) => Notification.error(err.response.data.error));
         },
          //Pagination
         getResults(page = 1) {
-                axios.get('/api/employees?page=' + page)
-                .then(response => {
-                    this.tabledata = response.data;
-                    this.employees = response.data.data;
-                });
+            axios.get('/api/suppliers?page=' + page)
+            .then(response => {
+                this.tabledata = response.data;
+                this.suppliers = response.data.data;
+            });
         },
-        deleteEmployee(id) {
+        deleteSupplier(id) {
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -114,12 +114,12 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete('/api/employees/' + id)
+                    axios.delete('/api/suppliers/' + id)
                         .then((res) => {
-                            this.employees = this.employees.filter(employee => {
-                                return employee.id != id;
+                            this.suppliers = this.suppliers.filter(supplier => {
+                                return supplier.id != id;
                             });
-                            this.$router.push({ name: 'employees' });
+                            this.$router.push({ name: 'suppliers' });
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',

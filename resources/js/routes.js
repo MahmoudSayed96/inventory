@@ -10,6 +10,11 @@ import AllEmployees from './components/employee/AllEmployees.vue';
 import CreateEmployee from './components/employee/CreateEmployee.vue';
 import EditEmployee from './components/employee/EditEmployee.vue';
 
+// Supplier Components
+import AllSuppliers from './components/supplier/AllSuppliers.vue';
+import CreateSupplier from './components/supplier/CreateSupplier.vue';
+import EditSupplier from './components/supplier/EditSupplier.vue';
+
 export const routes = [
     {path: '/', component: Login, name: '/'},
     {path: '/register', component: Register, name: 'register'},
@@ -17,9 +22,15 @@ export const routes = [
     {path: '/logout', component: Logout, name: 'logout'},
 
     {path: '/home', component: Home, name: 'home'},
-    
+
+    // Employee Routes
     {path: '/employees', component: AllEmployees, name: 'employees'},
     {path: '/create-employee', component: CreateEmployee, name: 'create-employee'},
     {path: '/edit-employee/:id', component: EditEmployee, name: 'edit-employee'},
+
+    // Supplier Routes
+    {path: '/suppliers', component: AllSuppliers, name: 'suppliers'},
+    {path: '/create-supplier', component: CreateSupplier, name: 'create-supplier'},
+    {path: '/edit-supplier/:id', component: EditSupplier, name: 'edit-supplier'},
 
 ];

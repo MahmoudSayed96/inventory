@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row">
-            <router-link to="/employees" class="btn btn-primary">All Employees</router-link>
+            <router-link to="/suppliers" class="btn btn-primary">All Suppliers</router-link>
         </div>
         <div class="row justify-content-center">
             <div class="col-xl-12 col-lg-12 col-md-12">
@@ -11,16 +11,16 @@
                             <div class="col-lg-12">
                                 <div class="login-form">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Employee Update</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Add Supplier</h1>
                                     <hr>
                                 </div>
-                                <form class="user" @submit.prevent="employeeUpdate" enctype="multipart/form-data">
+                                <form class="user" @submit.prevent="supplierInsert" enctype="multipart/form-data">
                                     <div class="form-row">
                                         <!-- Name -->
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" :class="{'is-invalid': errors.name }" id="name" 
-                                                    placeholder="Enter Employee Name" required v-model="form.name">
+                                                    placeholder="Enter Supplier Name" required v-model="form.name">
                                                 <div class="text-danger" v-if="errors.name">{{ errors.name[0] }}</div>
                                             </div>
                                         </div>
@@ -28,7 +28,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <input type="email" class="form-control" :class="{'is-invalid': errors.email }" id="email" 
-                                                    placeholder="Enter Employee Email" required v-model="form.email">
+                                                    placeholder="Enter Supplier Email" required v-model="form.email">
                                                 <div class="text-danger" v-if="errors.email">{{ errors.email[0] }}</div>
                                             </div>
                                         </div>
@@ -38,36 +38,17 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" :class="{'is-invalid': errors.address }" id="address" 
-                                                    placeholder="Enter Employee Address" v-model="form.address">
+                                                    placeholder="Enter Supplier Address" v-model="form.address">
                                                 <div class="text-danger" v-if="errors.address">{{ errors.address[0] }}</div>
                                             </div>
                                         </div>
-                                        <!-- salary -->
+                                        <!-- Shop Name -->
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="number" min="0.00" step="0.01" class="form-control" 
-                                                    :class="{'is-invalid': errors.salary }" id="salary" 
-                                                    placeholder="Enter Employee salary" v-model="form.salary">
-                                                <div class="text-danger" v-if="errors.salary">{{ errors.salary[0] }}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <!-- Joining Data -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="date" class="form-control" :class="{'is-invalid': errors.joining_date }" id="joining_date" 
-                                                    placeholder="Enter Employee Joining Date" v-model="form.joining_date">
-                                                <div class="text-danger" v-if="errors.joining_date">{{ errors.joining_date[0] }}</div>
-                                            </div>
-                                        </div>
-                                        <!-- Nid -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="number" min="0.00" step="0.01" class="form-control" 
-                                                    :class="{'is-invalid': errors.nid }" id="nid" 
-                                                    placeholder="Enter Employee Nid" v-model="form.nid">
-                                                <div class="text-danger" v-if="errors.nid">{{ errors.nid[0] }}</div>
+                                                <input type="text" class="form-control" 
+                                                    :class="{'is-invalid': errors.shop_name }" id="shop_name" 
+                                                    placeholder="Enter Employee Shop Name" v-model="form.shop_name">
+                                                <div class="text-danger" v-if="errors.shop_name">{{ errors.shop_name[0] }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -85,18 +66,18 @@
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="file" class="custom-file-input" :class="{'is-invalid': errors.new_photo }"
+                                                <input type="file" class="custom-file-input" :class="{'is-invalid': errors.photo }"
                                                          id="photo" @change="onFileSelected">
                                                 <label class="custom-file-label" for="photo">Choose file</label>
-                                                <div class="text-danger" v-if="errors.new_photo">{{ errors.new_photo[0] }}</div>
+                                                <div class="text-danger" v-if="errors.photo">{{ errors.photo[0] }}</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <img :src="form.new_photo" alt="" width="40" height="40">
+                                            <img :src="form.photo" alt="" width="40" height="40">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Update</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Save</button>
                                     </div>
                                 </form>
                                 </div>
@@ -115,29 +96,22 @@
 
 <script>
 export default {
-    name: 'edit-emplyee',
+    name: 'create-supplier',
     created() {
         // If user is not logged in redirect to '/login'.
         if (!User.isLoggedIn()) {
             this.$router.push({ name: '/' });
         }
-        let id = this.$route.params.id;
-        axios.get('/api/employees/'+id)
-            .then(({data}) => this.form = data.data)
-            .catch((err) => Notification.error(err.response.data.error));
     },
     data() {
         return {
             form: {
-                name: '',
-                email: '',
-                address: '',
-                phone: '',
-                salary: '',
-                joining_date: '',
-                photo: '',
-                nid: '',
-                new_photo: '',
+                name: null,
+                email: null,
+                address: null,
+                phone: null,
+                shop_name: null,
+                photo: null,
             },
             errors: {}
         }
@@ -150,21 +124,20 @@ export default {
             } else {
                 let reader = new FileReader();
                 reader.onload = event => {
-                    this.form.new_photo = event.target.result;
+                    this.form.photo = event.target.result;
                 }
                 reader.readAsDataURL(file);
             }
         },
-        employeeUpdate() {
-            let id = this.$route.params.id;
-            axios.patch('/api/employees/'+id, this.form)
+        supplierInsert() {     
+            axios.post('/api/suppliers', this.form)
                 .then((res) => {
                     Notification.success();
-                    this.$router.push({ name: 'employees' });
+                    this.$router.push({ name: 'suppliers' });
                 })
                 .catch(err => {
                     this.errors = err.response.data.errors;
-                    Notification.error('Something wroning');
+                    Notification.error(err.response.data.error);
                 });
         }
     }

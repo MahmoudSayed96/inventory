@@ -36,6 +36,9 @@ const Toast = Swal.mixin({
 });
 window.Toast = Toast;
 
+//Pagination laravel-vue-pagination
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 const router = new VueRouter({
     routes,
     mode: 'history'

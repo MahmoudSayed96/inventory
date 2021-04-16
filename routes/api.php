@@ -19,4 +19,5 @@ Route::group([
 
 Route::group(['namespace' => 'Api'], function() {
     Route::apiResource('employees', 'EmployeeController');
+    Route::apiResource('suppliers', 'SupplierController');
 });

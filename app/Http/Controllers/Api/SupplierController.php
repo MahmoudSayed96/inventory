@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\EmployeeResource;
-use App\Models\Employee;
+use App\Http\Resources\SupplierResource;
+use App\Models\Supplier;
 use App\Providers\AppServiceProvider;
 use App\Traits\ApiUploadImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class EmployeeController extends Controller
+class SupplierController extends Controller
 {
     use ApiUploadImageTrait;
 
@@ -21,8 +21,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::latest('id')->paginate(AppServiceProvider::PAGINATE_LIMIT);
-        return EmployeeResource::collection($employees);
+        $suppliers = Supplier::latest('id')->paginate(AppServiceProvider::PAGINATE_LIMIT);
+        return SupplierResource::collection($suppliers);
     }
 
     /**
@@ -40,21 +40,19 @@ class EmployeeController extends Controller
         ]);
         $photo = null;
         if ($request->photo) {
-            $photo = $this->uploadImage($request->photo, 'uploads/images/employees');
+            $photo = $this->uploadImage($request->photo, 'uploads/images/suppliers');
         }
-        $employee = Employee::create(
+        $supplier = Supplier::create(
             [
                 'name' => $request->name,
                 'address' => $request->address,
                 'email' => $request->email,
-                'nid' => $request->nid,
-                'salary' => $request->salary,
                 'phone' => $request->phone,
-                'joining_date' => $request->joining_date,
+                'shop_name' => $request->shop_name,
                 'photo' => $photo,
             ]
         );
-        return new EmployeeResource($employee);
+        return new SupplierResource($supplier);
     }
 
     /**
@@ -65,12 +63,12 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $employee = Employee::find($id);
-        if (!$employee) {
+        $supplier = Supplier::find($id);
+        if (!$supplier) {
             return response()->json(['error' => 'Not found'], 404);
         }
 
-        return new EmployeeResource($employee);
+        return new SupplierResource($supplier);
     }
 
     /**
@@ -82,34 +80,32 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $employee = Employee::find($id);
-        if (!$employee) {
+        $supplier = Supplier::find($id);
+        if (!$supplier) {
             return response()->json(['error' => 'Not found'], 404);
         }
 
         $validateData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', Rule::unique('employees', 'email')->ignore($id)],
-            'phone' => ['required', Rule::unique('employees', 'phone')->ignore($id)],
+            'email' => ['required', 'email', Rule::unique('suppliers', 'email')->ignore($id)],
+            'phone' => ['required', Rule::unique('suppliers', 'phone')->ignore($id)],
         ]);
-        $photo = $employee->photo;
+        $photo = $supplier->photo;
         if ($request->new_photo) {
-            $photo = $this->uploadImage($request->new_photo, 'uploads/images/employees');
-            $this->removeImage($employee->photo);
+            $photo = $this->uploadImage($request->new_photo, 'uploads/images/suppliers');
+            $this->removeImage($supplier->photo);
         }
-        $employee->update(
+        $supplier->update(
             [
                 'name' => $request->name,
                 'address' => $request->address,
                 'email' => $request->email,
-                'nid' => $request->nid,
-                'salary' => $request->salary,
+                'shop_name' => $request->shop_name,
                 'phone' => $request->phone,
-                'joining_date' => $request->joining_date,
                 'photo' => $photo,
             ]
         );
-        return new EmployeeResource($employee);
+        return new SupplierResource($supplier);
     }
 
     /**
@@ -120,14 +116,14 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        $employee = Employee::find($id);
-        if (!$employee) {
+        $supplier = Supplier::find($id);
+        if (!$supplier) {
             return response()->json(['error' => 'Not found'], 404);
         }
 
-        $photo = $employee->photo;
+        $photo = $supplier->photo;
         $this->removeImage($photo);
-        $employee->delete();
+        $supplier->delete();
         return response()->json(['message' => 'Deleted successfully'], 200);
     }
 }
