@@ -15,6 +15,11 @@ import AllSuppliers from './components/supplier/AllSuppliers.vue';
 import CreateSupplier from './components/supplier/CreateSupplier.vue';
 import EditSupplier from './components/supplier/EditSupplier.vue';
 
+// Category Components
+import AllCategories from './components/category/AllCategories.vue';
+import CreateCategory from './components/category/CreateCategory.vue';
+import EditCategory from './components/category/EditCategory.vue';
+
 export const routes = [
     {path: '/', component: Login, name: '/'},
     {path: '/register', component: Register, name: 'register'},
@@ -32,5 +37,10 @@ export const routes = [
     {path: '/suppliers', component: AllSuppliers, name: 'suppliers'},
     {path: '/create-supplier', component: CreateSupplier, name: 'create-supplier'},
     {path: '/edit-supplier/:id', component: EditSupplier, name: 'edit-supplier'},
+
+    // Category Routes
+    {path: '/categories', component: AllCategories, name: 'categories'},
+    {path: '/create-category', component: CreateCategory, name: 'create-category'},
+    {path: '/edit-category/:id', component: EditCategory, name: 'edit-category'},
 
 ];
