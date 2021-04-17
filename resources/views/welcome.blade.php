@@ -38,7 +38,7 @@
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
               <span>copyright &copy; {{date('Y')}} - developed by
-                <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
+                <b><a href="https://github.com/MahmoudSayed96" target="_blank">Mahmoud Sayed</a></b>
               </span>
             </div>
           </div>
@@ -60,6 +60,12 @@
   <script src="{{asset('backend/js/ruang-admin.min.js')}}"></script>
   <script src="{{asset('backend/vendor/chart.js/Chart.min.js')}}"></script>
   <script src="{{asset('backend/js/demo/chart-area-demo.js')}}"></script>
+  <script src="{{asset('backend/js/plugins/select2.min.js')}}"></script>
+  {{-- <script>
+    $(document).ready(function() {
+      $('.select2').select2();
+    });
+  </script> --}}
   @stack('scripts') 
 </body>
 

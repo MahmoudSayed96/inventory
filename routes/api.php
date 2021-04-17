@@ -17,8 +17,14 @@ Route::group([
     Route::post('me', 'AuthController@me');
 });
 
-Route::group(['namespace' => 'Api'], function() {
+Route::group([
+    'namespace' => 'Api',
+    // 'middleware' => 'JWT' 
+], function() {
     Route::apiResource('employees', 'EmployeeController');
+    Route::get('/suppliers/list', 'SupplierController@supplierList');
     Route::apiResource('suppliers', 'SupplierController');
+    Route::get('/categories/list', 'CategoryController@categoryList');
     Route::apiResource('categories', 'CategoryController');
+    Route::apiResource('products', 'ProductController');
 });

@@ -56,6 +56,7 @@
                                         <!-- Joining Data -->
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label for="joning_date">Joining Date</label>
                                                 <input type="date" class="form-control" :class="{'is-invalid': errors.joining_date }" id="joining_date" 
                                                     placeholder="Enter Employee Joining Date" v-model="form.joining_date">
                                                 <div class="text-danger" v-if="errors.joining_date">{{ errors.joining_date[0] }}</div>

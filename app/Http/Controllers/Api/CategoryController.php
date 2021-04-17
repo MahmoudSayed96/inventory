@@ -96,4 +96,9 @@ class CategoryController extends Controller
         $category->delete();
         return response()->json(['message' => 'Deleted successfully'], 200);
     }
+
+    public function categoryList() {
+        $categories = Category::all();
+        return CategoryResource::collection($categories);
+    }
 }

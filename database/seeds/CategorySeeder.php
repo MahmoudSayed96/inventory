@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -11,6 +12,14 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $categories = ['Laptop', 'PC', 'Phone', 'Hard'];
+        $db_cats = [];
+        foreach ($categories as $cat) {
+            $db_cats[] = [
+                'name' => $cat
+            ];
+        }
+
+        Category::insert($db_cats);
     }
 }

@@ -47,7 +47,7 @@
                                             <div class="form-group">
                                                 <input type="text" class="form-control" 
                                                     :class="{'is-invalid': errors.shop_name }" id="shop_name" 
-                                                    placeholder="Enter Employee Shop Name" v-model="form.shop_name">
+                                                    placeholder="Enter Supplier Shop Name" v-model="form.shop_name">
                                                 <div class="text-danger" v-if="errors.shop_name">{{ errors.shop_name[0] }}</div>
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@
                                             <div class="form-group">
                                                 <input type="text" class="form-control" 
                                                     :class="{'is-invalid': errors.phone }" id="phone" 
-                                                    placeholder="Enter Employee Phone" required v-model="form.phone">
+                                                    placeholder="Enter Supplier Phone" required v-model="form.phone">
                                                 <div class="text-danger" v-if="errors.phone">{{ errors.phone[0] }}</div>
                                             </div>
                                         </div>

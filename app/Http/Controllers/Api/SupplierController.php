@@ -126,4 +126,10 @@ class SupplierController extends Controller
         $supplier->delete();
         return response()->json(['message' => 'Deleted successfully'], 200);
     }
+
+    
+    public function supplierList() {
+        $suppliers = Supplier::all();
+        return SupplierResource::collection($suppliers);
+    }
 }

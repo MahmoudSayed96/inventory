@@ -20,6 +20,11 @@ import AllCategories from './components/category/AllCategories.vue';
 import CreateCategory from './components/category/CreateCategory.vue';
 import EditCategory from './components/category/EditCategory.vue';
 
+// Product Components
+import AllProducts from './components/product/AllProducts.vue';
+import CreateProduct from './components/product/CreateProduct.vue';
+import EditProduct from './components/product/EditProduct.vue';
+
 export const routes = [
     {path: '/', component: Login, name: '/'},
     {path: '/register', component: Register, name: 'register'},
@@ -42,5 +47,10 @@ export const routes = [
     {path: '/categories', component: AllCategories, name: 'categories'},
     {path: '/create-category', component: CreateCategory, name: 'create-category'},
     {path: '/edit-category/:id', component: EditCategory, name: 'edit-category'},
+
+    // Product Routes
+    {path: '/products', component: AllProducts, name: 'products'},
+    {path: '/create-product', component: CreateProduct, name: 'create-product'},
+    {path: '/edit-product/:id', component: EditProduct, name: 'edit-product'},
 
 ];

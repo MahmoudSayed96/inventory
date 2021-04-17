@@ -57,6 +57,20 @@ style="display: none;">
                 </div>
             </div>
         </li>
+        {{-- Products --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#products"
+                aria-expanded="true" aria-controls="products">
+                <i class="fas fa-fw fa-shopping-cart"></i>
+                <span>Products</span>
+            </a>
+            <div id="products" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <router-link to="/create-product" class="collapse-item">Add Product</router-link>
+                    <router-link to="/products" class="collapse-item">All Products</router-link>
+                </div>
+            </div>
+        </li>
     </ul>
 </nav>
 @push('scripts')
