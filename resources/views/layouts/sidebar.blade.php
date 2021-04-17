@@ -71,6 +71,20 @@ style="display: none;">
                 </div>
             </div>
         </li>
+        {{-- Expenses --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#expenses"
+                aria-expanded="true" aria-controls="expenses">
+                <i class="fas fa-fw fa-hand-holding-usd"></i>
+                <span>Expenses</span>
+            </a>
+            <div id="expenses" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <router-link to="/create-expense" class="collapse-item">Add Expense</router-link>
+                    <router-link to="/expenses" class="collapse-item">All Expenses</router-link>
+                </div>
+            </div>
+        </li>
     </ul>
 </nav>
 @push('scripts')
