@@ -31,7 +31,7 @@ class ExpenseController extends Controller
     {
         $validateData = $request->validate([
             'amount' => ['required', 'numeric'],
-            'details' => ['nullable'],
+            'details' => ['required', 'min:10', 'max:255'],
         ]);
         $expense = Expense::create(
             [
@@ -73,7 +73,7 @@ class ExpenseController extends Controller
         }
         $validateData = $request->validate([
             'amount' => ['required', 'numeric'],
-            'details' => ['nullable'],
+            'details' => ['required', 'min:10', 'max:255'],
         ]);
         $expense->update(
             [
