@@ -30,6 +30,11 @@ import AllExpenses from './components/expense/AllExpenses.vue';
 import CreateExpense from './components/expense/CreateExpense.vue';
 import EditExpense from './components/expense/EditExpense.vue';
 
+// Customer Components
+import AllCustomers from './components/customer/AllCustomers.vue';
+import CreateCustomer from './components/customer/CreateCustomer.vue';
+import EditCustomer from './components/customer/EditCustomer.vue';
+
 export const routes = [
     {path: '/', component: Login, name: '/'},
     {path: '/register', component: Register, name: 'register'},
@@ -62,5 +67,10 @@ export const routes = [
     {path: '/expenses', component: AllExpenses, name: 'expenses'},
     {path: '/create-expense', component: CreateExpense, name: 'create-expense'},
     {path: '/edit-expense/:id', component: EditExpense, name: 'edit-expense'},
+
+    // Customer Routes
+    {path: '/customers', component: AllCustomers, name: 'customers'},
+    {path: '/create-customer', component: CreateCustomer, name: 'create-customer'},
+    {path: '/edit-customer/:id', component: EditCustomer, name: 'edit-customer'},
 
 ];

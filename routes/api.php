@@ -28,4 +28,5 @@ Route::group([
     Route::apiResource('categories', 'CategoryController');
     Route::apiResource('products', 'ProductController');
     Route::apiResource('expenses', 'ExpenseController');
+    Route::apiResource('customers', 'CustomerController');
 });

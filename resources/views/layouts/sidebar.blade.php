@@ -71,6 +71,20 @@ style="display: none;">
                 </div>
             </div>
         </li>
+        {{-- Customer --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#customers"
+                aria-expanded="true" aria-controls="customers">
+                <i class="fas fa-fw fa-hands-helping"></i>
+                <span>Customers</span>
+            </a>
+            <div id="customers" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <router-link to="/create-customer" class="collapse-item">Add Customer</router-link>
+                    <router-link to="/customers" class="collapse-item">All Customers</router-link>
+                </div>
+            </div>
+        </li>
         {{-- Expenses --}}
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#expenses"
