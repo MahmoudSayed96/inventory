@@ -35,6 +35,13 @@ import AllCustomers from './components/customer/AllCustomers.vue';
 import CreateCustomer from './components/customer/CreateCustomer.vue';
 import EditCustomer from './components/customer/EditCustomer.vue';
 
+// Salary Components
+import AllSalaries from './components/salary/AllSalaries.vue';
+import GivenSalaries from './components/salary/GivenSalaries.vue';
+import PaySalary from './components/salary/PaySalary.vue';
+import ViewSalary from './components/salary/ViewSalary.vue';
+import EditSalary from './components/salary/EditSalary.vue';
+
 export const routes = [
     {path: '/', component: Login, name: '/'},
     {path: '/register', component: Register, name: 'register'},
@@ -63,14 +70,21 @@ export const routes = [
     {path: '/create-product', component: CreateProduct, name: 'create-product'},
     {path: '/edit-product/:id', component: EditProduct, name: 'edit-product'},
 
-    // Expense Routes
-    {path: '/expenses', component: AllExpenses, name: 'expenses'},
-    {path: '/create-expense', component: CreateExpense, name: 'create-expense'},
-    {path: '/edit-expense/:id', component: EditExpense, name: 'edit-expense'},
-
     // Customer Routes
     {path: '/customers', component: AllCustomers, name: 'customers'},
     {path: '/create-customer', component: CreateCustomer, name: 'create-customer'},
     {path: '/edit-customer/:id', component: EditCustomer, name: 'edit-customer'},
+    
+    // Expense Routes
+    {path: '/expenses', component: AllExpenses, name: 'expenses'},
+    {path: '/create-expense', component: CreateExpense, name: 'create-expense'},
+    {path: '/edit-expense/:id', component: EditExpense, name: 'edit-expense'},
+    
+    // Salary Routes
+    {path: '/salaries', component: AllSalaries, name: 'salaries'},
+    {path: '/given-salaries', component: GivenSalaries, name: 'given-salaries'},
+    {path: '/pay-salary/:id', component: PaySalary, name: 'pay-salary'},
+    {path: '/view-salary/:id', component: ViewSalary, name: 'view-salary'},
+    {path: '/edit-salary/:id', component: EditSalary, name: 'edit-salary'},
 
 ];

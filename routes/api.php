@@ -29,4 +29,12 @@ Route::group([
     Route::apiResource('products', 'ProductController');
     Route::apiResource('expenses', 'ExpenseController');
     Route::apiResource('customers', 'CustomerController');
+
+    // Salary.
+    Route::get('/salaries', 'SalaryController@index');
+    Route::post('/salary/paid/{id}', 'SalaryController@paid');
+    Route::get('/employees-salaries', 'SalaryController@employeesSalaries');
+    Route::get('/salary/view/{id}', 'SalaryController@viewSalary');
+    Route::get('/salary/show/{id}', 'SalaryController@show');
+    Route::post('/salary/update/{id}', 'SalaryController@update');
 });

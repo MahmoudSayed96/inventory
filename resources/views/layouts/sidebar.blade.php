@@ -99,6 +99,20 @@ style="display: none;">
                 </div>
             </div>
         </li>
+        {{-- Salary --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#salaries"
+                aria-expanded="true" aria-controls="salaries">
+                <i class="fas fa-fw fa-money-bill-alt"></i>
+                <span>Salary</span>
+            </a>
+            <div id="salaries" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <router-link to="/given-salaries" class="collapse-item">Add Salary</router-link>
+                    <router-link to="/salaries" class="collapse-item">All Salary</router-link>
+                </div>
+            </div>
+        </li>
     </ul>
 </nav>
 @push('scripts')
