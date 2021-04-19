@@ -113,6 +113,19 @@ style="display: none;">
                 </div>
             </div>
         </li>
+        {{-- Stock --}}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#stock"
+                aria-expanded="true" aria-controls="stock">
+                <i class="fas fa-fw fa-store-alt"></i>
+                <span>Stock</span>
+            </a>
+            <div id="stock" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <router-link to="/stock" class="collapse-item">Stock</router-link>
+                </div>
+            </div>
+        </li>
     </ul>
 </nav>
 @push('scripts')

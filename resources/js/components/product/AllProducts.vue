@@ -33,7 +33,7 @@
                       <tr v-for="product in searchFilter" :key="product.id">
                         <td>{{ product.code }}</td>
                         <td>{{ product.name }}</td>
-                        <td><img :src="product.image" class="rounded-circle" width="50" height="50" :alt="product.name"></td>
+                        <td><img :src="product.image" width="70" height="70" :alt="product.name"></td>
                         <td>{{ product.category }}</td>
                         <td>{{ product.buying_price }}</td>
                         <td>{{ product.selling_price }}</td>

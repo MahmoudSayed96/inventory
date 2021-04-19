@@ -37,4 +37,7 @@ Route::group([
     Route::get('/salary/view/{id}', 'SalaryController@viewSalary');
     Route::get('/salary/show/{id}', 'SalaryController@show');
     Route::post('/salary/update/{id}', 'SalaryController@update');
+
+    // Stock.
+    Route::post('/stock/update/{id}', 'StockController@update');
 });

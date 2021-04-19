@@ -42,6 +42,10 @@ import PaySalary from './components/salary/PaySalary.vue';
 import ViewSalary from './components/salary/ViewSalary.vue';
 import EditSalary from './components/salary/EditSalary.vue';
 
+// Stock.
+import Stock from './components/stock/Stock.vue';
+import EditStock from './components/stock/EditStock.vue';
+
 export const routes = [
     {path: '/', component: Login, name: '/'},
     {path: '/register', component: Register, name: 'register'},
@@ -86,5 +90,8 @@ export const routes = [
     {path: '/pay-salary/:id', component: PaySalary, name: 'pay-salary'},
     {path: '/view-salary/:id', component: ViewSalary, name: 'view-salary'},
     {path: '/edit-salary/:id', component: EditSalary, name: 'edit-salary'},
-
+    
+    // Stock.
+    {path: '/stock', component: Stock, name: 'stock'},
+    {path: '/edit-stock/:id', component: EditStock, name: 'edit-stock'},
 ];
