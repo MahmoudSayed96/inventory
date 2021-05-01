@@ -36,7 +36,7 @@
                                     <td>{{product.code}}</td>
                                     <td>{{product.category}}</td>
                                     <td>{{product.quantity}}</td>
-                                    <td v-if="product.quantity > 10">
+                                    <td v-if="product.quantity >= 5">
                                         <span class="badge badge-success">Available</span>
                                     </td>
                                     <td v-else-if="product.quantity >= 1 && product.quantity < 5">

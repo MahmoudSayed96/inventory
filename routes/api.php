@@ -40,4 +40,14 @@ Route::group([
 
     // Stock.
     Route::post('/stock/update/{id}', 'StockController@update');
+
+    // Pos.
+    Route::get('/category/products/{id}', 'PosController@categoryProducts');
+    
+    // Cart.
+    Route::get('/cart/products', 'CartController@getProducts');
+    Route::get('/cart/add/{id}', 'CartController@addToCart');
+    Route::get('/cart/remove/{id}', 'CartController@removeFromCart');
+    Route::get('/cart/increment/{id}', 'CartController@cartIncrement');
+    Route::get('/cart/decrement/{id}', 'CartController@cartDecrement');
 });

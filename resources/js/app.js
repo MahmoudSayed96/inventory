@@ -38,6 +38,7 @@ window.Toast = Toast;
 
 //Pagination laravel-vue-pagination
 Vue.component('pagination', require('laravel-vue-pagination'));
+window.Reload = new Vue();
 
 const router = new VueRouter({
     routes,

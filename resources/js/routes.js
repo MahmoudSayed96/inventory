@@ -46,6 +46,9 @@ import EditSalary from './components/salary/EditSalary.vue';
 import Stock from './components/stock/Stock.vue';
 import EditStock from './components/stock/EditStock.vue';
 
+// Pos.
+import Pos from './components/pos/Pos.vue';
+
 export const routes = [
     {path: '/', component: Login, name: '/'},
     {path: '/register', component: Register, name: 'register'},
@@ -94,4 +97,8 @@ export const routes = [
     // Stock.
     {path: '/stock', component: Stock, name: 'stock'},
     {path: '/edit-stock/:id', component: EditStock, name: 'edit-stock'},
+    
+    // Pos.
+    {path: '/pos', component: Pos, name: 'pos'},
+
 ];

@@ -14,6 +14,12 @@ style="display: none;">
                 <span>Dashboard</span>
             </router-link>
         </li>
+        <li class="nav-item active">
+            <router-link to="/pos" class="nav-link">
+                <i class="fas fa-fw fa-life-ring"></i>
+                <span>POS</span>
+            </router-link>
+        </li>
         <hr class="sidebar-divider">
         {{-- Employees --}}
         <li class="nav-item">
